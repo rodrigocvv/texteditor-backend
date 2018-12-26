@@ -3,9 +3,12 @@ mongoose.Promise = global.Promise;
 
 const DB_URL = 'mongodb://' + process.env.DB_TEXTEDITOR_USER + ':' + process.env.DB_TEXTEDITOR_PASSWORD + '@' + process.env.DB_TEXTEDITOR_URL;
 
-mongoose.connect(DB_URL, {
+const url = process.env.MONGO_TEST_URL || DB_URL;
+// console.log('URL => ' + url);
+mongoose.connect(url, {
     useNewUrlParser: true
 });
+
 
 var userContentSchema = new mongoose.Schema({
     createDate: Date,
@@ -25,7 +28,7 @@ let userDataSchema = new mongoose.Schema({
     lastAccessDate: Date,
     createDate: Date,
     content: [userContentSchema]
-}, { collection: 'usersData' }
+}, { collection: 'userData' }
 );
 
 

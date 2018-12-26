@@ -3,8 +3,12 @@ const userDataService = require("../services/user-data-service");
 function getContent(googleId) {
     return new Promise((resolve, reject) => {
         userDataService.findByGoogleId(googleId).then(userDB => {
-            console.log('Retorno => ' + JSON.stringify(userDB));
-            resolve(userDB.content);
+            // console.log('Retorno => ' + JSON.stringify(userDB));
+            if (userDB) {
+                resolve(userDB.content);
+            } else {
+                resolve([]);
+            }
         }, error => {
             reject(error);
         });
@@ -32,18 +36,8 @@ function updateUserData(googleId, content) {
     });
 }
 
-function findByUserId(userId) {
-    return new Promise((resolve, reject) => {
-        userDataService.findByUserId(userId).then(userDB => {
-            resolve(userDB)
-        }, error => {
-            reject(error);
-        });
-    });
-}
 
 module.exports = {
-    findByUserId,
     updateUserData,
     getContent
 }

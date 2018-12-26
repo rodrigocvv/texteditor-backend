@@ -37,7 +37,7 @@ function insertGoogleUser(googleUser) {
             googleUser: googleUser,
             createDate: new Date()
         };
-        userDataService.insertUserData(userData).then(userDB => {
+        userDataService.saveUser(userData).then(userDB => {
             resolve(userDB);
         }, error => {
             reject(error);
@@ -48,7 +48,7 @@ function insertGoogleUser(googleUser) {
 function findByGoogleId(userId) {
     return new Promise((resolve, reject) => {
         userDataService.findByGoogleId(userId).then(userDB => {
-            resolve(userDB)
+            resolve(userDB);
         }, error => {
             reject(error);
         });
