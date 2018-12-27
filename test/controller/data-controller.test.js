@@ -1,14 +1,30 @@
 const expect = require('chai').expect;
-const testMongoUrl = process.env.MONGO_TEST_URL;
-// const mongoUnit = require('mongo-unit');
-const userDataService = require('../../services/user-data-service');
+const dataController = require('../../controller/data-controller');
+const sinon = require("sinon");
 
 describe('DataController', () => {
 
+
+
+    it('getUserData', async() => {
+        const req = {
+            user: {
+                sub: '1'
+            }
+        };
+        let res = {
+            send: sinon.spy()
+        };
+    
+        const userContent = await dataController.getUserData(req, res);
+        // expect(res.send.calledOnce).to.be.true;
+        // console.log('Retorno = > ' + res.send.firstCall.args[0]);
+        console.log('Retorno = > ' + JSON.stringify(res));
+        // expect(res.send.firstCall.args[0]).to.equal("bla");
+    });    
+
     // const testData = require('./data/testData.json');
-
     // afterEach(() => mongoUnit.drop());
-
     // it('getUserData', () => {
     //     const userDataMock = {
     //         "googleUser": {
@@ -22,9 +38,6 @@ describe('DataController', () => {
     //         // console.log('Usuario inserido com sucesso => ' + JSON.stringify(newUser));
     //         expect(newUser != null && newUser._id != null, 'New user added').to.be.true;
     //     });
-
-
-
     // });
 
 });
