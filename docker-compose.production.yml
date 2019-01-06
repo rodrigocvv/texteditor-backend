@@ -1,0 +1,13 @@
+version: '2'
+services:
+  api:
+    env_file:
+      - production.variables.env
+    build: .
+    image: text-image:v1
+    command:  node app.js
+    volumes:
+      - .:/srv/app
+      - /srv/app/node_modules
+    ports:
+      - "3000:3000"
