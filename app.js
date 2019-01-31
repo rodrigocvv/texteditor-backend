@@ -20,3 +20,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log('texteditor-backend listening on port ' + port + '!');
 });
+
+module.exports = app;
