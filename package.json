@@ -2,10 +2,11 @@
   "name": "texteditor-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "mocha --require test/prepare test/**/*.test.js --exit",
-    "start": "node app.js"
+    "start": "node app.js",
+    "desenv": "docker-compose -f docker-compose.desenv.yml up"
   },
   "author": "Rodrigo Villela",
   "license": "ISC",
